@@ -24,7 +24,15 @@ const Sidebar = () => {
         <hr className="h-px my-8 border-0 bg-gray-500 dark:bg-zinc-600"/>
       </div>
     
-   
+      <div className='text-lg '>
+        {data.map((items, i) => (
+          <Link to={items.link} key={i} className='my-2 flex items-center inline-block hover:underline '>
+            {items.icon} 
+            <span className='ml-2'>{items.title}</span>
+          </Link> 
+        ))}
+        <hr className="h-px my-8 border-0 bg-gray-500  dark:bg-zinc-600"/>
+      </div>
     </div>
   );
 };
