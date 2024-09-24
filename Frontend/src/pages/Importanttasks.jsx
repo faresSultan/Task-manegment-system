@@ -1,6 +1,6 @@
 import React from 'react';
-import Sidebar from '../components/Home/Sidebar';
-import Cards from '../components/Home/cards';
+import Sidebar from '../components/Sidebar';
+import Cards from '../components/Cards';
 const ImportantTasks = () => {
   return (
    <div>

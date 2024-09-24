@@ -1,5 +1,5 @@
 import React from 'react';
-import Cards from '../components/Home/cards';
+import Cards from '../components/Cards';
 const Completedtasks = () => {
   return (
    <div>

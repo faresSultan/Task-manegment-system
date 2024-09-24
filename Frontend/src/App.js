@@ -1,13 +1,13 @@
 
 import './App.css';
-import Alltasks from './pages/alltasks';
-import Home from './pages/home';
+import Alltasks from './pages/AllTasks';
+import Home from './pages/Home';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ImportantTasks from './pages/Importanttasks';
-import Completedtasks from './pages/Comletedtasks';
-import InprogressTasks from './pages/Inprogress';
-import SignUp from './pages/SignUp';
-import Login from './pages/Login';
+import Completedtasks from './pages/CompletedTasks';
+import InprogressTasks from './pages/InprogressTasks';
+//import SignUp from './pages/SignUp';  mestany ismail beh ye5alas 
+//import Login from './pages/Login';
 const App = () => {
   return (
     <div className="bg-slate-100 text-gray-900 h-lvh  relative">
@@ -20,8 +20,8 @@ const App = () => {
             <Route path= '/InprogressTasks' element = {<InprogressTasks /> } />
           </Route>
 
-          <Route path="/SignUp" element={<SignUp />} />
-          <Route path="/Login" element={<Login />} />
+          {/* <Route path="/SignUp" element={<SignUp />} />
+          <Route path="/Login" element={<Login />} /> */}
         </Routes>
       </Router>
     </div>

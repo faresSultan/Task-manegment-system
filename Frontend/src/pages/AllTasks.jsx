@@ -1,8 +1,8 @@
 
 import React, { useState } from 'react';
-import Cards from '../components/Home/cards';
+import Cards from '../components/Cards';
 import { IoIosAddCircleOutline } from "react-icons/io";
-import InputData from '../components/Home/InputData';
+//import InputData from '../components/Home/InputData'; mestany Omar beh ye5alas :)
 const Alltasks = () => {
   const [InputDiv,setInputDiv] = useState("hidden");
   return (
@@ -14,7 +14,7 @@ const Alltasks = () => {
             <Cards home = {"true"} InputDiv = {InputDiv} setInputDiv = {setInputDiv} />
         </div>
 
-        <InputData InputDiv = {InputDiv} setInputDiv = {setInputDiv} />
+        {/* <InputData InputDiv = {InputDiv} setInputDiv = {setInputDiv} /> */}
     </>
    
   );
