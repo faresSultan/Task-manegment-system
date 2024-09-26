@@ -1,22 +1,32 @@
 import React, { useState, useContext } from 'react';
-import Sidebar from '../components/Sidebar';
-import { Link, Outlet } from 'react-router-dom';
+import Sidebar from '../components/Home/Sidebar';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
 import { IoIosLogOut } from "react-icons/io";
 import { CgDarkMode } from "react-icons/cg";
 import { TbLayoutSidebarLeftExpandFilled, TbLayoutSidebarLeftCollapseFilled } from "react-icons/tb";
 import { DarkModeContext } from '../DarkModeContext'; 
+import { useDispatch } from 'react-redux';
+import { authActions } from '../store/auth';
 
 const Home = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true); 
   const { toggleDarkMode, isDarkMode } = useContext(DarkModeContext); 
+  const dispatch= useDispatch();
+  const navigate= useNavigate()
+  const handleLogout = ()=>{
+    dispatch(authActions.logout())
+    localStorage.clear("id")
+    localStorage.clear("token")
+    navigate("/login")
+  }
 
   return (
     <>
-      {/* Header */}
+    
       <div className={`w-full h-[10vh] ${isDarkMode ? 'bg-black' : 'bg-zinc-700'} flex justify-between items-center p-2 md:p-4`}>
         <div className="flex items-center">
           
-          {/* Logo */}
+          
           <Link to="/">
             <img
               src="task-list_7458077.png"
@@ -25,10 +35,10 @@ const Home = () => {
             />
           </Link>
           
-          {/* Vertical line */}
+          
           <div className="h-8 border-l-2 border-gray-400 mx-2"></div>
           
-          {/* Sidebar toggle icon */}
+          
           <button
             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
             className="text-2xl md:text-3xl text-gray-300 hover:scale-110 transition-all mr-2"
@@ -38,18 +48,18 @@ const Home = () => {
         </div>
 
         <div className="flex items-center">
-          {/* Dark mode icon */}
-          <button
+          
+          <button title='Dark Mode'
             onClick={toggleDarkMode}
             className="text-2xl md:text-3xl text-gray-300 hover:scale-110 transition-all mr-2 md:mr-4"
           >
             <CgDarkMode />
           </button>
 
-          {/* Logout icon */}
-          <Link to="/Login" className="text-2xl md:text-3xl text-gray-300 hover:translate-x-1 transition-all">
+          {/* logout */}
+          <button onClick={handleLogout} title='Log Out' className="text-2xl md:text-3xl text-gray-300 hover:translate-x-1 transition-all">
             <IoIosLogOut />
-          </Link>
+          </button>
         </div>
       </div>
 
@@ -61,12 +71,10 @@ const Home = () => {
           </div>
         )}
 
-        {/* Mobile and Tablet Sidebar */}
         <div className={`lg:hidden ${isSidebarOpen ? "w-full" : "hidden"} border-r-2 p-4`}>
           <Sidebar />
         </div>
 
-        {/* Main content area */}
         <div className={`transition-all ${isSidebarOpen ? "hidden lg:block" : "w-full"} bg-white dark:bg-zinc-800 rounded-xl p-6 ml-4`}> 
           <Outlet />
         </div>
