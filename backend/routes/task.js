@@ -31,7 +31,7 @@ router.get(url, authenticationToken, async (req, res) => {
             return res.status(404).json({ message: "User not found." });
         }
 
-        return res.status(200).json({ tasks: user.tasks });
+        return res.status(200).json({ tasks: user.tasks , user: user});
     } catch (err) {
         console.log(err);
         res.status(500).json({ message: "Server error." });

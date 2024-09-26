@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import Sidebar from '../components/Home/Sidebar';
+import Sidebar from '../components/Sidebar';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 import { IoIosLogOut } from "react-icons/io";
 import { CgDarkMode } from "react-icons/cg";

@@ -4,7 +4,7 @@ import { MdNotificationImportant } from "react-icons/md";
 import { MdOutlineDoneOutline } from "react-icons/md";
 import { GrInProgress } from "react-icons/gr";
 import { Link } from 'react-router-dom';
-import { DarkModeContext } from '../../DarkModeContext'; 
+import { DarkModeContext } from '../DarkModeContext'; 
 import axios from 'axios';
 
 const Sidebar = () => {
