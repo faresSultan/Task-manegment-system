@@ -54,15 +54,14 @@ router.delete(`${url}/:id`, authenticationToken,async(req,res)=>{
 router.put(`${url}/:id`,authenticationToken,async(req,res)=>{
     try{
         const {id} = req.params;
-        const {title, description , category, important } =req.body
-        task = await Task.findByIdAndUpdate(id,{title: title , description:description, category: category, important: important})
+        let {title, description , category, important, completed } =req.body
+        const task = await Task.findByIdAndUpdate(id,{title: title , description:description, category: category, important: important , completed: completed})
         return res.status(201).json({Task: task });
     } catch(err){
         console.log(err);
         res.status(500).json({message: "Server error"});
     }
 });
-
 
 
 

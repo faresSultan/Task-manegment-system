@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { MdLabelImportantOutline } from "react-icons/md";
+import { MdLabelImportant } from "react-icons/md";
 import { FaRegEdit } from "react-icons/fa";
 import { MdDeleteOutline } from "react-icons/md";
 import { IoIosAddCircleOutline } from "react-icons/io";
@@ -7,17 +8,17 @@ import axios from "axios";
 
 const Cards = ({ home, setInputDiv ,data,setEdited}) => {
     const headers= {id:localStorage.getItem("id"), authorization: `Bearer ${localStorage.getItem("token")}`}
-    const handleComplete = async()=>{ //still working on it
+    const handleComplete = async(id, completed)=>{ 
         try {
-            await axios.put("http://localhost:8080/api/v1/tasks")
+            await axios.put(`http://localhost:8080/api/v1/tasks/${id}` , {completed:!completed},{headers})
             
         } catch (error) {
             console.log(error);
         }
     }
-    const makeImportant = async()=>{ //still working on it
+    const makeImportant = async(id,important)=>{ 
         try {
-            await axios.put("http://localhost:8080/api/v1/tasks")
+            await axios.put(`http://localhost:8080/api/v1/tasks/${id}` , {important:!important},{headers})
             
         } catch (error) {
             console.log(error);
@@ -38,7 +39,6 @@ const Cards = ({ home, setInputDiv ,data,setEdited}) => {
         setEdited({id:id,title:title ,description:description})
     }
     
-    const [TaskStatus, setTaskStatus] = useState("In progress");
 
     return (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 p-4">
@@ -53,16 +53,16 @@ const Cards = ({ home, setInputDiv ,data,setEdited}) => {
                             <div className="flex justify-center mb-4">
                                 <button className={`${
                                     items.completed === false ? "bg-red-500" : "bg-green-500"
-                                } w-4/5 p-2 rounded text-l font-bold dark:text-gray-100`} >
-                                    {/* dont forget to edit here when ismail updates */}
+                                } w-4/5 p-2 rounded text-l font-bold dark:text-gray-100`} onClick={()=>handleComplete(items._id,items.completed)}>
+                                  
                                     {items.completed===true?"Completed":"Incomplete"} 
                                 </button>
                             </div>
 
                             <div className="mt-3 ml-1 mb-0 w-full flex justify-around text-2xl font-semibold text-gray-900 dark:text-gray-300">
-                                <button onClick={makeImportant}> <MdLabelImportantOutline className="hover:scale-125 transition-all duration-300" /> </button>
-                                <button onClick={()=>handleEdit(items._id,items.title,items.description)}> <FaRegEdit className="hover:scale-125 transition-all duration-300" /> </button>
-                                <button onClick={()=>handleDelete(items._id)}> <MdDeleteOutline className="hover:scale-125 transition-all duration-300" /></button>
+                                <button onClick={()=>makeImportant(items._id,items.important)}> {items.important? <MdLabelImportant className="text-green-500 hover:scale-125 transition-all duration-300 " />:<MdLabelImportantOutline className="hover:scale-125 transition-all duration-300 hover:text-green-500" />} </button>
+                                <button onClick={()=>handleEdit(items._id,items.title,items.description)}> <FaRegEdit className="hover:scale-125 transition-all duration-300 hover:text-green-500" /> </button>
+                                <button onClick={()=>handleDelete(items._id)}> <MdDeleteOutline className="hover:scale-125 transition-all duration-300 hover:text-red-500" /></button>
                             </div>
                         </div>
                     </div>
