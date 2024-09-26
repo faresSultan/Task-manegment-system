@@ -1,3 +1,4 @@
+
 const router = require("express").Router();
 const Task = require("../models/task");
 const User = require('../models/user');
@@ -31,7 +32,20 @@ router.get(url, authenticationToken, async (req, res) => {
             return res.status(404).json({ message: "User not found." });
         }
 
-        return res.status(200).json({ tasks: user.tasks , user: user});
+        const { filter } = req.query; 
+        let tasks = user.tasks;
+
+        if (filter === 'important') {
+            tasks = tasks.filter(task => task.important === true);
+        } else if (filter === 'completed') {
+            tasks = tasks.filter(task => task.completed === true);
+        } else if (filter === 'incomplete') {
+            tasks = tasks.filter(task => task.completed === false);
+        } else{
+           tasks = tasks
+        }
+       
+        return res.status(200).json({ tasks: tasks , user: user});
     } catch (err) {
         console.log(err);
         res.status(500).json({ message: "Server error." });

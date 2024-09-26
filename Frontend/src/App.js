@@ -7,7 +7,7 @@ import Completedtasks from './pages/CompletedTasks';
 import InprogressTasks from './pages/InprogressTasks';
 import SignUp from './pages/SignUp';
 import Login from './pages/Login';
-import { useState, useEffect } from 'react';
+import {  useEffect } from 'react';
 import {useDispatch, useSelector} from "react-redux"
 import { authActions } from './store/auth';
 
