@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import Cards from '../components/cards';
 import { IoIosAddCircleOutline } from "react-icons/io";
@@ -11,12 +10,12 @@ const Alltasks = () => {
  
   const headers= {id:localStorage.getItem("id"), authorization: `Bearer ${localStorage.getItem("token")}`}
   useEffect(()=>{
-    const fetch = async ()=>{
-      const response= await axios.get("http://localhost:8080/api/v1/tasks", {headers,});
+    const fetch = async (filter)=>{
+      const response= await axios.get(`http://localhost:8080/api/v1/tasks?filter=${filter}`, {headers,});
       setData(response.data);
     };
-    fetch(); 
-  })
+    fetch("all"); 
+  },[])
  
   
   return (
