@@ -13,7 +13,7 @@ const InprogressTasks = () => {
       setData(response.data.tasks);
     };
     fetch("incomplete"); 
-  },[])
+  })
   return (
     <div>
     <Cards  home={"false"} data={Data}/>

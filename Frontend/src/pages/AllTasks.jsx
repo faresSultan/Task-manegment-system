@@ -15,7 +15,7 @@ const Alltasks = () => {
       setData(response.data);
     };
     fetch("all"); 
-  },[])
+  })
  
   
   return (

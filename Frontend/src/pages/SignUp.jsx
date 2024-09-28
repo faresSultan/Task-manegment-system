@@ -42,7 +42,7 @@ const SignUp = () => {
       <div className='p-4 w-full max-w-xs sm:max-w-md lg:max-w-lg rounded-xl bg-gray-300 dark:bg-zinc-800'>
         <div className='text-lg sm:text-2xl font-semibold dark:text-gray-100'>Sign up in Taskaty</div>
 
-        <input type='username' placeholder='Name' 
+        <input type='username' placeholder='Username' 
         className='bg-gray-200 dark:bg-zinc-700 px-3 py-2 my-2 sm:my-3 rounded w-full dark:text-gray-100' 
         name='username' onChange={handleChange} value={data.username} />
 

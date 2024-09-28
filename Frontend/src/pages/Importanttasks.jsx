@@ -14,7 +14,7 @@ const ImportantTasks = () => {
       setData(response.data.tasks);
     };
     fetch("important"); 
-  },[])
+  })
   return (
    <div>
         <Cards home={false} data={Data} />
