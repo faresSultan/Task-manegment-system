@@ -52,10 +52,10 @@ const Cards = ({ home, setInputDiv ,data,setEdited}) => {
                         <div className="mt-4 w-full">
                             <div className="flex justify-center mb-4">
                                 <button className={`${
-                                    items.completed === false ? "bg-red-500" : "bg-green-500"
+                                    items.completed === false ? "bg-amber-500" : "bg-green-500"
                                 } w-4/5 p-2 rounded text-l font-bold dark:text-gray-100`} onClick={()=>handleComplete(items._id,items.completed)}>
                                   
-                                    {items.completed===true?"Completed":"Incomplete"} 
+                                    {items.completed===true?"Completed":"In Progress"} 
                                 </button>
                             </div>
 
