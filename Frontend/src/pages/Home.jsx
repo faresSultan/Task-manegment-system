@@ -64,7 +64,7 @@ const Home = () => {
       </div>
 
       
-      <div className={`flex ${isDarkMode ? 'bg-zinc-900' : 'bg-gray-200'} h-[90vh]`}> 
+      <div className={`flex ${isDarkMode ? 'bg-zinc-900' : 'bg-gray-200'} min-h-[90vh]`}> 
         {isSidebarOpen && (
           <div className="hidden lg:block w-1/6  p-4"> 
             <Sidebar />
@@ -75,8 +75,9 @@ const Home = () => {
           <Sidebar />
         </div>
 
-        <div className={`transition-all ${isSidebarOpen ? "hidden lg:block" : "w-full"} bg-white dark:bg-zinc-800 rounded-xl p-6 ml-4`}> 
-          <Outlet />
+      
+        <div className={`transition-all ${isSidebarOpen ? "lg:w-5/6 hidden lg:block" : "w-full"} bg-white dark:bg-zinc-800 rounded-xl p-6 ml-4 `}>
+        <Outlet />
         </div>
       </div>
     </>
