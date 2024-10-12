@@ -8,6 +8,7 @@ import axios from "axios";
 
 const Cards = ({ home, setInputDiv ,data,setEdited}) => {
     const headers= {id:localStorage.getItem("id"), authorization: `Bearer ${localStorage.getItem("token")}`}
+    
     const handleComplete = async(id, completed)=>{ 
         try {
             await axios.put(`http://localhost:8080/api/v1/tasks/${id}` , {completed:!completed},{headers})
