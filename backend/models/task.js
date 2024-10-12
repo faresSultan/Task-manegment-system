@@ -19,7 +19,8 @@ const TaskSchema = new mongoose.Schema({
     },
     category: [{
         type:String,
-        default : [],
+         enum: ['Unset', 'Work', 'Study', 'Self-care', 'Exercise', 'Relax'],
+        default: 'Unset'
     }]
 });
 

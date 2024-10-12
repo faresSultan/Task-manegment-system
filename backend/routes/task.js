@@ -9,7 +9,7 @@ const url = "/tasks";
 router.post(url,authenticationToken,async(req,res)=>{
     try{
         console.log(req.body);
-        const {title,description, important,category } = req.body;
+        const {title,description, important,category ='unset'} = req.body;
         const id = req.user._id.toString();
         const newTask = new Task({title : title, description:description, important :important , category: category});
         const saveTask = await newTask.save();
@@ -68,7 +68,7 @@ router.delete(`${url}/:id`, authenticationToken,async(req,res)=>{
 router.put(`${url}/:id`,authenticationToken,async(req,res)=>{
     try{
         const {id} = req.params;
-        let {title, description , category, important, completed } =req.body
+        let {title, description , category='unset', important, completed } =req.body
         const task = await Task.findByIdAndUpdate(id,{title: title , description:description, category: category, important: important , completed: completed})
         return res.status(201).json({Task: task });
     } catch(err){

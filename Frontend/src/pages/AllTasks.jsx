@@ -28,6 +28,7 @@ const Alltasks = () => {
         </div>
 
         <InputData InputDiv = {InputDiv} setInputDiv = {setInputDiv} updatedData={edited} setUpdatedData={setEdited} />
+        
     </>
    
   );
