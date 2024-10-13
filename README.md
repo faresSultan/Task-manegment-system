@@ -53,3 +53,9 @@ Open a **new terminal** and follow the steps below:
 
 ## Running the App
 Once both the backend and frontend servers are running, you can access the app by navigating to: http://localhost:3000/
+
+
+## Additional Notes
+- The backend server runs by default on `http://localhost:3000`.
+- Make sure to configure any environment variables required for the app in the `.env` file.
+
